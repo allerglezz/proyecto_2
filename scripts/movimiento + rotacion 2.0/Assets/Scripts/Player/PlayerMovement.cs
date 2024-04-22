@@ -21,6 +21,7 @@ public class PlayerMovement : MonoBehaviour
     private CharacterController characterController;
     [SerializeField] private InteraccionInputData interaccionInputData = null;
     private bool canMove = true;
+    private bool inPause = false;
 
     void Start()
     {
@@ -44,42 +45,52 @@ public class PlayerMovement : MonoBehaviour
         interaccionInputData.InteractedClicked = Input.GetKeyDown(KeyCode.E);
         interaccionInputData.InteractedReleased = Input.GetKeyUp(KeyCode.E);
 
-        if (Input.GetButton("Jump") && canMove && characterController.isGrounded)
+        if (!inPause)
         {
-            moveDirection.y = jumpPower;
-        }
-        else
-        {
-            moveDirection.y = movementDirectionY;
-        }
+            if (Input.GetButton("Jump") && canMove && characterController.isGrounded)
+            {
+                moveDirection.y = jumpPower;
+            }
+            else
+            {
+                moveDirection.y = movementDirectionY;
+            }
 
-        if (!characterController.isGrounded)
-        {
-            moveDirection.y -= gravity * Time.deltaTime;
-        }
+            if (!characterController.isGrounded)
+            {
+                moveDirection.y -= gravity * Time.deltaTime;
+            }
 
-        if (Input.GetKey(KeyCode.R) && canMove)
-        {
-            characterController.height = crouchHeight;
-            walkSpeed = crouchSpeed;
-            runSpeed = crouchSpeed;
+            if (Input.GetKey(KeyCode.R) && canMove)
+            {
+                characterController.height = crouchHeight;
+                walkSpeed = crouchSpeed;
+                runSpeed = crouchSpeed;
 
-        }
-        else
-        {
-            characterController.height = defaultHeight;
-            walkSpeed = 6f;
-            runSpeed = 12f;
-        }
+            }
+            else
+            {
+                characterController.height = defaultHeight;
+                walkSpeed = 6f;
+                runSpeed = 12f;
+            }
 
-        characterController.Move(moveDirection * Time.deltaTime);
+            characterController.Move(moveDirection * Time.deltaTime);
 
-        if (canMove)
-        {
-            rotationX += -Input.GetAxis("Mouse Y") * lookSpeed;
-            rotationX = Mathf.Clamp(rotationX, -lookXLimit, lookXLimit);
-            playerCamera.transform.localRotation = Quaternion.Euler(rotationX, 0, 0);
-            transform.rotation *= Quaternion.Euler(0, Input.GetAxis("Mouse X") * lookSpeed, 0);
+            if (canMove)
+            {
+                rotationX += -Input.GetAxis("Mouse Y") * lookSpeed;
+                rotationX = Mathf.Clamp(rotationX, -lookXLimit, lookXLimit);
+                playerCamera.transform.localRotation = Quaternion.Euler(rotationX, 0, 0);
+                transform.rotation *= Quaternion.Euler(0, Input.GetAxis("Mouse X") * lookSpeed, 0);
+            }
         }
     }
+
+
+    public void setPause()
+    {
+        inPause = !inPause;
+    }
 }
+ 

@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 13966, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: movimiento + grimorio
+  m_EditorClassIdentifier: 
+  templateScene: {fileID: 102900000, guid: 9fc0d4010bbf28b4594072e72b8655ab, type: 3}
+  templateName: 
+  description: 
+  preview: {fileID: 0}
+  dependencies:
+  - dependency: {fileID: 2800000, guid: 341d5a98b930e474a821cdb4c92a95a2, type: 3}
+    instantiationMode: 0
+  - dependency: {fileID: 2800000, guid: 82c514993b7cf7e48944cd576055841c, type: 3}
+    instantiationMode: 0
+  - dependency: {fileID: 2800000, guid: 742849facc2f5ae4595a6fde25538a6d, type: 3}
+    instantiationMode: 0
+  - dependency: {fileID: 2100000, guid: 69c868a51ea30944b9815e3c33274d68, type: 2}
+    instantiationMode: 0
+  - dependency: {fileID: 2800000, guid: 2fd6421f253b4ef1a19526541f9ffc0c, type: 3}
+    instantiationMode: 1
+  - dependency: {fileID: 11400000, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
+    instantiationMode: 1
+  - dependency: {fileID: 2800000, guid: f0e2be1af0efa324aa2317bd5327a2f6, type: 3}
+    instantiationMode: 0
+  - dependency: {fileID: 2800000, guid: 8e320ae8dd4ca9d4894f4bbc827c5a70, type: 3}
+    instantiationMode: 0
+  - dependency: {fileID: 8300000, guid: ca718b7ee1dd1b44b852d9fe7c7a90d2, type: 3}
+    instantiationMode: 1
+  - dependency: {fileID: 2100000, guid: 679dca67beba63042bc1de561096a3e1, type: 2}
+    instantiationMode: 0
+  - dependency: {fileID: 24100000, guid: 46b544ab007b4fa4998498cadaa4ee29, type: 2}
+    instantiationMode: 0
+  - dependency: {fileID: 2800000, guid: ee148e281f3c41c5b4ff5f8a5afe5a6c, type: 3}
+    instantiationMode: 1
+  - dependency: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    instantiationMode: 1
+  - dependency: {fileID: 11400000, guid: 0129f2a55c57bba4f949accd697eee8b, type: 2}
+    instantiationMode: 1
+  - dependency: {fileID: 11400000, guid: 2cec78f82a139934ea14c9c97d3c008e, type: 2}
+    instantiationMode: 1
+  - dependency: {fileID: 12800000, guid: e3265ab4bf004d28a9537516768c1c75, type: 3}
+    instantiationMode: 1
+  templatePipeline: {fileID: 0}
+  badge: {fileID: 0}
+  addToDefaults: 0
