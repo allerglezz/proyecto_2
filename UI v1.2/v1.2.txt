@@ -1,0 +1,3 @@
+Interfaz accesible in game, con ajustes de volumen y brillo funcionales. Salir de juego funcional. Incluye assets de interfaz finales colocados.
+
+Dos audios porque Sol Rojo en el Cielo ha sido sustituido.
