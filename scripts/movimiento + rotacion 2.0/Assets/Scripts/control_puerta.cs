@@ -8,11 +8,13 @@ public class control_puerta : MonoBehaviour
     Animator anim;
     public bool Dentro = false;
     public bool Puerta = false;
-    public static bool llave_cogida = false;
+    //public static bool llave_cogida = false;
+    //se obitene el animator
     void Start()
     {
         anim = GetComponent<Animator>();
     }
+    //al entrar al collider si es un jugador
     void OnTriggerEnter(Collider col)
     {
         if (col.tag == "Player")
@@ -21,6 +23,7 @@ public class control_puerta : MonoBehaviour
         }
     }
 
+    //al salir del collider si es un jugador
     void OnTriggerExit(Collider col)
     {
         if (col.tag == "Player")
@@ -29,20 +32,24 @@ public class control_puerta : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
+    // en cada frame
     void Update()
     {
-        if (Dentro && Input.GetKeyUp(KeyCode.E) && llave_cogida) 
+        //si esta dentro se presiona la e y la llave esta en el inventario
+        if (Dentro && Input.GetKeyUp(KeyCode.E)) 
         {
+            //se cambia el valor
             Puerta = !Puerta;
         }
+        //si Puerta es true se abre
         if(Puerta)
         {
-            anim.SetBool("abierta", true);
+            anim.SetBool("ABIERTA", true);
         }
+        //en caso contrario se cierra
         else
         {
-            anim.SetBool("abierta", false);
+            anim.SetBool("ABIERTA", false);
         }
     }
 }

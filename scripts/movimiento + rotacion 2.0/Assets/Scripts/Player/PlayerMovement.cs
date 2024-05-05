@@ -23,6 +23,7 @@ public class PlayerMovement : MonoBehaviour
     private bool canMove = true;
     private bool inPause = false;
 
+    //se inicia el characterController, se bloquea el cursor y se resetea los inputs
     void Start()
     {
         characterController = GetComponent<CharacterController>();
@@ -31,6 +32,7 @@ public class PlayerMovement : MonoBehaviour
         interaccionInputData.ResetInput();
     }
 
+    //por cada frame
     void Update()
     {
         Vector3 forward = transform.TransformDirection(Vector3.forward);
@@ -45,22 +47,26 @@ public class PlayerMovement : MonoBehaviour
         interaccionInputData.InteractedClicked = Input.GetKeyDown(KeyCode.E);
         interaccionInputData.InteractedReleased = Input.GetKeyUp(KeyCode.E);
 
+        //si no esta en pausa
         if (!inPause)
         {
+            //si se presiona el salto, se puede mover y el personaje esta en el suelo salta
             if (Input.GetButton("Jump") && canMove && characterController.isGrounded)
             {
                 moveDirection.y = jumpPower;
             }
+            //en caso de no poder saltar
             else
             {
                 moveDirection.y = movementDirectionY;
             }
-
+            //si el personaje no esta en el suelo, se aplica la gravedad
             if (!characterController.isGrounded)
             {
                 moveDirection.y -= gravity * Time.deltaTime;
             }
 
+            //si se pulsa r y se puede mover se agacha
             if (Input.GetKey(KeyCode.R) && canMove)
             {
                 characterController.height = crouchHeight;
@@ -68,6 +74,7 @@ public class PlayerMovement : MonoBehaviour
                 runSpeed = crouchSpeed;
 
             }
+            //si no se puede agachar
             else
             {
                 characterController.height = defaultHeight;
@@ -75,8 +82,10 @@ public class PlayerMovement : MonoBehaviour
                 runSpeed = 12f;
             }
 
+            //se mueve el personaje
             characterController.Move(moveDirection * Time.deltaTime);
 
+            //si se puede mover
             if (canMove)
             {
                 rotationX += -Input.GetAxis("Mouse Y") * lookSpeed;
@@ -87,7 +96,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-
+    //cambia el valor de inPause, usado por grimorioManager
     public void setPause()
     {
         inPause = !inPause;

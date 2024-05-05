@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GrimorioManager : MonoBehaviour
 {
+    //guardamos los gameobjects del menu desde unity
     [SerializeField] GameObject Menu;
     [SerializeField] GameObject Jugador;
     [SerializeField] GameObject Indicaciones;
@@ -12,6 +13,7 @@ public class GrimorioManager : MonoBehaviour
     [SerializeField] GameObject Coleccionables;
     private PlayerMovement movement;
     public static bool Pausado = false;
+    //se inician todos en false, se guarda playerMovement y se bloque la camara
     public void Awake()
     {
         movement = GetComponent<PlayerMovement>();
@@ -22,12 +24,14 @@ public class GrimorioManager : MonoBehaviour
         Ajustes.SetActive(false);
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        Debug.Log(movement);
     }
+    //en cada frame
     public void Update()
     {
+        //al pulsar tab
         if (Input.GetKeyDown(KeyCode.Tab))
         {
+            //si no esta pausado se pause y viceversa
             if (Pausado == false)
             {
                 PausarJuego();
@@ -36,9 +40,11 @@ public class GrimorioManager : MonoBehaviour
             {
                 ContinuarJuego();
             }
+            //en playerMovement se bloquea la camara
             movement.setPause();
         }
     }
+    //pausamos el tiempo, se activa menu e indicaciones y se bloque el cursor
     public void PausarJuego()
     {
         Time.timeScale = 0f;
@@ -52,6 +58,7 @@ public class GrimorioManager : MonoBehaviour
         Cursor.visible = true;
     }
 
+    //se reanuda el tiempo, desactivamos todos los menus y desbloqueamos el cursor
     public void ContinuarJuego()
     {
         Time.timeScale = 1f;
