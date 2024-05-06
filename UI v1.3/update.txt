@@ -1,0 +1,3 @@
+creditos intro + menu inicial
+
+falta la escena de juego pero porque está implementada desde mov. jugador
