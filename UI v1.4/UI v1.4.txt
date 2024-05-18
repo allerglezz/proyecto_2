@@ -1,0 +1,3 @@
+Añadida opcion ajustes desde menu inicio
+
+añadidos controles adicionales en el menu
